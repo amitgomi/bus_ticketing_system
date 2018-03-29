@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-6 footerleft ">
-        <div class="logofooter"> MyBus</div>
+        <div class="logofooter" style="color:#e82c2c "> MyBus</div>
         <p>book your ride!!</p>
         <!-- <p><i class="fa fa-map-pin"></i> 210, Aggarwal Tower, Rohini sec 9, New Delhi -        110085, INDIA</p> -->
         <p><i class="fa fa-phone"></i> Phone (India) : +91 9728024431</p>

@@ -3,6 +3,7 @@
 		$_SESSION["islogin"]=0;
 		$_SESSION["user_name"]="";
 		$_SESSION["user_id"]="";
+		//$_SESSION["connection"]="";
 	}
 
 ?>

@@ -5,7 +5,7 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	    	<li class="active"><a href="#">book your ride!!</a></li>
-	    	<li><a href="#">Page 1</a></li>
+	    	<!-- <li><a href="#">Page 1</a></li> -->
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	    	<?php 
@@ -24,6 +24,8 @@
 	    </ul>
 	</nav>
 
-<?php include 'login.php' ?>
+<?php
+	if($_SESSION["islogin"] == 0)
+	include 'login.php'; ?>
 
 <script src="js/bootstrap.min.js" type="text/css"></script>
