@@ -7,7 +7,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>                        
 		        </button>				
-		    	<a class="navbar-brand" style="color:#e82c2c; font-size: 35px;" href="#">MyBus</a>
+		    	<a class="navbar-brand" style="color:#e82c2c; font-size: 35px;" href="index.php">MyBus</a>
 		    </div>
 
 		    <div class="collapse navbar-collapse" id="myNavbar">
@@ -20,14 +20,14 @@
 			    	//$_SESSION["user_name"]="hello";
 			    	if($_SESSION["islogin"] == 0){
 			    		$str = "<li onclick=\"document.getElementById('id01').style.display='block'\"><a href=\"#\"><span class=\"glyphicon glyphicon-log-in\"> Login </a></li>
-				    	<li><a href=\"#\"><span class=\"glyphicon glyphicon-user\"> </span>Signup</a></li>";
+				    	<li><a href=\"register.php\"><span class=\"glyphicon glyphicon-user\"> </span>Signup</a></li>";
 			    		echo $str;
 			    	}
 			    	else{ ?>
 			    		<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION["user_name"]; ?> </a>
 			    			<ul class="dropdown-menu">
 				            <li><a href="profile.php">Your profile</a></li>
-				            <li><a href="#">Your tickets</a></li>
+				            <li><a href="showticket.php">Your tickets</a></li>
 				            <li><a href="index.php" onclick="logout()">Logout</a></li>
 				          </ul>
 			    		</li>

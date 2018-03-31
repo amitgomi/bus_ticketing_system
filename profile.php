@@ -17,11 +17,11 @@
 			<h1 style="text-align: center;"><?php echo $_SESSION["user_name"]?></h1>
 			<img class="profile_photo" src="photo.jpg">
 		</div>
-		<form style="padding-left: 25%;">
+		<form style="padding-left: 25%;" method="POST">
 			<div class="form-group">
 			    <label >Username:</label>
 			    <br>
-			    <input type="text" class="form-control " style=" width: 70%;" placeholder="Last name" id="user_name" readonly value="<?php echo $_SESSION["user_name"]?>">
+			    <input type="text" class="form-control " style=" width: 70%;" placeholder="username" id="user_name" readonly value="<?php echo $_SESSION["user_name"]?>">
 			</div>
 			<div class="form-group">
 			    <label >Name:</label>
