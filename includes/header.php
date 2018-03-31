@@ -9,10 +9,12 @@
 	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="login.css" >
 	<link rel="stylesheet" type="text/css" href="footer.css" >
+	<link rel="stylesheet" type="text/css" href="style.css" >
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="javas.js"></script>
 
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

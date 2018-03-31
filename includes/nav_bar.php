@@ -26,9 +26,9 @@
 			    	else{ ?>
 			    		<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION["user_name"]; ?> </a>
 			    			<ul class="dropdown-menu">
-				            <li><a href="#">Your profile</a></li>
-				            <li><a href="#">Page 1-2</a></li>
-				            <li><a href="index.php" onclick="myAjax()">Logout</a></li>
+				            <li><a href="profile.php">Your profile</a></li>
+				            <li><a href="#">Your tickets</a></li>
+				            <li><a href="index.php" onclick="logout()">Logout</a></li>
 				          </ul>
 			    		</li>
 			    	<?php
@@ -43,17 +43,5 @@
 <?php
 	if($_SESSION["islogin"] == 0)
 	include 'login.php'; ?>
-<script >
-	function myAjax() {
-      $.ajax({
-           type: "POST",
-           url: 'ajax.php',
-           data:{action:'log_out'},
-           success:function(html) {
-             alert(html);
-           }
 
-      });
- }
-</script>
 <script src="js/bootstrap.min.js" type="text/css"></script>

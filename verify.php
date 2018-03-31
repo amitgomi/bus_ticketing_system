@@ -29,6 +29,11 @@
 			$_SESSION["islogin"]=1;
 			$_SESSION["user_name"]= $row["user_name"];
 			$_SESSION["user_id"]= $row["user_id"];
+			$_SESSION["email_id"]=$row["email_id"];
+			$_SESSION["phone_no"]=$row["phone_no"];
+			$_SESSION["first_name"]=$row["first_name"];
+			$_SESSION["last_name"]=$row["last_name"];
+			$_SESSION["photo"]=$row["photo"];
 			//Redirect(true);
 			Redirect('index.php', false);
 		}

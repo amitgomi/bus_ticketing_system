@@ -7,7 +7,7 @@
 	include 'includes/conn.php';
 	//$_SESSION["islogin"]=0;
 ?>
-	<div class="container" style="margin-top: 40px; margin-bottom: 40px">
+	<div class="container" style="margin-top: 70px; margin-bottom: 40px;">
 		<h1>Book your ride!!</h1>
 
 		
