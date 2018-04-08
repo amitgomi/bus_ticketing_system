@@ -12,7 +12,7 @@
 	<div class="container" style="margin-top: 70px; margin-bottom: 40px;">
 		<div >
 			<h1 style="text-align: center;"></h1>
-			<img class="profile_photo" src="photo.jpg">
+			<img class="profile_photo" src="img/reg.png">
 		</div>
 		<form action="index.php" style="padding-left: 25%;" method="POST">
 			<div class="form-group">

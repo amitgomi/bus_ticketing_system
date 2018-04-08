@@ -7,23 +7,36 @@
 	include 'includes/conn.php';
 	//$_SESSION["islogin"]=0;
 ?>
-	<div class="container" style="margin-top: 70px; margin-bottom: 40px;">
-		<h1>Book your ride!!</h1>
+	<div class="back_ground"> </div>
+	<div class="back_ground_blur"> </div>
+	<div class="container" style="margin-top: 50px; margin-bottom: 40px; height: 500px; opacity: 0.9;">
+		<h1 style="padding-left:100px; ">Book your ride!!</h1>
+		<?php
+		$min_date = date("Y-m-d");
+		$max_date = date('Y-m-d', strtotime($min_date. ' + 29 days'))
+		?>
 
-		
-		<form class="form-inline" action="index.php" method="POST">
+		<form  style=" " class="form-inline" action="index.php" method="POST">
 		    <div class="form-group">
 		      <label class="control-label col-sm-3" for="source">Source:</label>
 		      <div class="col-sm-10">
-		        <input type="text" name="source" class="form-control" id="sorce" placeholder="Enter source" name="email">
+		        <input type="text" name="source" class="form-control" id="source" placeholder="Enter source">
 		      </div>
 		    </div>
 		    <div class="form-group">
 		      <label class="control-label col-sm-3" for="pwd">Destination:</label>
 		      <div class="col-sm-10">          
-		        <input type="text" name="destination" class="form-control" id="destination" placeholder="Enter destination" name="pwd">
+		        <input type="text" name="destination" class="form-control" id="destination" placeholder="Enter destination">
 		      </div>
 		    </div>
+
+		    <div class="form-group">
+		      <label class="control-label col-sm-3" for="source">Date:</label>
+		      <div class="col-sm-10">
+		        <input type="date" min=<?php echo $min_date;?> max=<?php echo $max_date;?> name="date" class="form-control" id="date" placeholder="dd/mm/yyyy" >
+		      </div>
+		    </div>
+
 		    <div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button type="submit" name="submit" class="btn btn-primary">Search</button>
@@ -35,6 +48,9 @@
 			if(isset($_POST['submit'])){
 				echo "<h1>Search results:</h1>";
 				$source=$_POST['source'];
+				$date=$_POST['date'];
+				$_SESSION["date"]=$date;
+				//echo $date;
 				$source = trim($source);
 				$_SESSION["source"] =$source;
 				$destination=$_POST['destination'];
@@ -45,20 +61,33 @@
 				$query = "SELECT * FROM bus WHERE intermediate_station LIKE '%".$source."%".$destination."%'";
 
 				$res = mysqli_query($connection,$query);
+				if($date == "0000-00-00"){
+					echo "<h1>Select date</h1>";
+				}
+				else if($source ==""){
+					echo "<h1>Enter source</h1>";
+				}
+				else if($destination == ""){
+					echo "<h1>Enter destination</h1>";
+				}
+				else if(mysqli_num_rows($res)==0){
+					echo "<h1>No result found</h1>";
+				}
+				else{
 				?>
-				 <div class="table-responsive">
-				  <table class="table table-hover">
-				  	<thead>
-				      <tr>
-				        <th>Bus no.</th>
-				        <th>Arival time</th>
-				        <th>destination time</th>
-				        <th>intermediate stops</th>
-				        <th>available seats</th>
-				        <th>fare</th>
-				        <th>photo</th>
-				        <th>Book</th>
-				      </tr>
+				<div class="table-responsive" style="background-color: rgba(206, 228, 229,0.8);">
+				    <table class="table table-hover">
+				  		<thead>
+				      	<tr>
+				        	<th>Bus no.</th>
+				        	<th>Arival time</th>
+				        	<th>destination time</th>
+				        	<th>intermediate stops</th>
+				        	<th>available seats</th>
+				        	<th>fare</th>
+				        	<th>photo</th>
+				        	<th>Book</th>
+				        </tr>
 				    </thead>
 				  	<?php
 				    while($row = mysqli_fetch_assoc($res)){
@@ -67,8 +96,23 @@
 						$intermediate_time = $row["intermediate_time"];
 						$intermediate_price = $row["intermediate_price"];
 						$intermediate_station = $row["intermediate_station"];
-						$available_seats = $row["available_seats"];
+						$total_seats = $row["total_seats"];
 						$photo = $row["photo"];
+
+						////////////////////available seats
+						$query = "SELECT * FROM seats WHERE bus_id = $bus_id and date1 = '$date'";
+						$res1 = mysqli_query($connection,$query);
+						if($row1 = mysqli_fetch_assoc($res1)){
+							$available_seats= $row1["available_seats"];
+						}
+						else{
+							$query = "INSERT INTO seats (bus_id,date1,available_seats) VALUES ($bus_id,'$date',$total_seats)";
+							$res1 = mysqli_query($connection,$query);
+							$available_seats= $total_seats;
+						}
+
+
+						////////////////////
 
 						$arrival_time="00:00";
 						$destination_time="00:00";
@@ -130,7 +174,7 @@
 				  </table>
 				</div> 
 				
-		<?php	}
+		<?php	} }
 		?>
 		
 	</div>

@@ -15,7 +15,7 @@
 	<div class="container" style="margin-top: 70px; margin-bottom: 40px;">
 		<div >
 			<h1 style="text-align: center;"><?php echo $_SESSION["user_name"]?></h1>
-			<img class="profile_photo" src="photo.jpg">
+			<img class="profile_photo" src="img/reg.png">
 		</div>
 		<form style="padding-left: 25%;" method="POST">
 			<div class="form-group">

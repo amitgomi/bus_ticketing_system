@@ -9,9 +9,11 @@
 ?>
 	<div class="container" style="margin-top: 40px; margin-bottom: 40px">
 		<?php
+		if(($_SESSION["islogin"]==1)){
 		$bus_id=$_GET["bus_id"];
 		$user_id=$_SESSION["user_id"];
 		$source=$_SESSION["source"] ;
+		$date=$_SESSION["date"] ;
 		$destination=$_SESSION["destination"];
 		$query = "SELECT * FROM bus WHERE bus_id = ".$_GET['bus_id'];
 		$res = mysqli_query($connection,$query);
@@ -43,11 +45,28 @@
 	
 		<h1>Voilla!! ride from <?php echo $_SESSION["source"]; ?> to <?php echo $_SESSION["destination"]; ?>     fare = <?php echo $fare; ?></h1>
 
-		<h3 style="display: inline-block;">Number of passengers :</h3>
+		<?php 
+		//$query = "SELECT available_seats FROM bus WHERE   bus_id = $bus_id";
+		$query = "SELECT * FROM seats WHERE bus_id = $bus_id and date1 = '$date'";
+	
+    	$result = mysqli_query($connection,$query);
+    	if(!$result)
+    		echo "query not working";
+    	$row = mysqli_fetch_assoc($result);
+    	$max_seat = $row["available_seats"];
+		?>
 		<form action="booked.php" method="POST" style="display: inline-block;">
-		    <input name="number" style="width: 60px;" data-bind="value: qty()" value="1" type="number" max="6" min="1" name="qty" id="qty" maxlength="6"/>
+		<h3 style="display: inline-block;">Number of passengers :</h3>
+		    <input name="number" style="width: 60px;" data-bind="value: qty()" value="1" type="number" max="<?php echo $max_seat;?>" min="1"  maxlength="6"/>
+		    <br>
+
 		    <button name="submit" value="submit" >go</button>
 		</form>
+		<?php
+		}
+		else
+			echo "<h1 style=\"margin-top:40px;\">You are not logged in</h1>";
+		?>
 
 		
 
