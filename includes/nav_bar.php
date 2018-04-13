@@ -15,6 +15,10 @@
 			    	<li class="active"><a href="#">book your ride!!</a></li>
 			    	<!-- <li><a href="#">Page 1</a></li> -->
 			    </ul>
+			    <ul class="nav navbar-nav">
+			    	<li ><a href="about.php">About us</a></li>
+			    	<!-- <li><a href="#">Page 1</a></li> -->
+			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			    	<?php 
 			    	//$_SESSION["user_name"]="hello";

@@ -8,6 +8,7 @@
 		$_SESSION["first_name"]="";
 		$_SESSION["last_name"]="";
 		$_SESSION["photo"]="";
+		$_SESSION["cur_page"]="index.php";
 		//$_SESSION["connection"]="";
 	}
 

@@ -17,6 +17,7 @@
 			$query = "SELECT * FROM ticket WHERE user_id=".$_SESSION["user_id"];
 
 			$res = mysqli_query($connection,$query);
+			
 		?>
 
 		<h1>Past rides</h1>

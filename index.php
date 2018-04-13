@@ -46,7 +46,6 @@
 
 		<?php
 			if(isset($_POST['submit'])){
-				echo "<h1>Search results:</h1>";
 				$source=$_POST['source'];
 				$date=$_POST['date'];
 				$_SESSION["date"]=$date;
@@ -61,19 +60,21 @@
 				$query = "SELECT * FROM bus WHERE intermediate_station LIKE '%".$source."%".$destination."%'";
 
 				$res = mysqli_query($connection,$query);
-				if($date == "0000-00-00"){
-					echo "<h1>Select date</h1>";
-				}
-				else if($source ==""){
-					echo "<h1>Enter source</h1>";
+				
+				if($source ==""){
+					echo "<h1 style=\"color:red;\" >Enter source</h1>";
 				}
 				else if($destination == ""){
-					echo "<h1>Enter destination</h1>";
+					echo "<h1 style=\"color:red;\" >Enter destination</h1>";
+				}
+				else if($date == 0){
+					echo "<h1 style=\"color:red;\" >Select date</h1>";
 				}
 				else if(mysqli_num_rows($res)==0){
-					echo "<h1>No result found</h1>";
+					echo "<h1 style=\"color:red;\" >No result found</h1>";
 				}
 				else{
+				echo "<h1>Search results:</h1>";
 				?>
 				<div class="table-responsive" style="background-color: rgba(206, 228, 229,0.8);">
 				    <table class="table table-hover">

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>Book bus</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content = "width=device-width, initial-scal = 1">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="login.css" >
+	<link rel="stylesheet" type="text/css" href="footer.css" >
+	<link rel="stylesheet" type="text/css" href="style.css" >
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="javas.js"></script>
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="padding-left: 50px; padding-right: 50px; background-color: #0c1a1e">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+		        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>                        
+		        </button>				
+		    	<a class="navbar-brand" style="color:#e82c2c; font-size: 35px;" href="index.php">MyBus</a>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="myNavbar">
+			    <ul class="nav navbar-nav">
+			    	<li class="active"><a href="#">book your ride!!</a></li>
+			    	<!-- <li><a href="#">Page 1</a></li> -->
+			    </ul>
+			    <ul class="nav navbar-nav">
+			    	<li ><a href="about.php">About us</a></li>
+			    	<!-- <li><a href="#">Page 1</a></li> -->
+			    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+
+			    		<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION["user_name"]; ?> </a>
+			    			<ul class="dropdown-menu">
+				            <li><a href="profile.php">Your profile</a></li>
+				            <li><a href="showticket.php">Your tickets</a></li>
+				            <li><a href="index.php" onclick="logout()">Logout</a></li>
+				          </ul>
+			    		</li>
+			    </ul>
+
+			</div>
+	    </div>
+	</nav>
+
+	<div class="container" style="margin-top: 70px; margin-bottom: 40px;"> 
+		<div class="row" >
+			<div class="container col-md-12">
+				<img class="profile_photo profile_photo1" src="img/amit.png" onmouseover="hover1(this);" onmouseout="unhover1(this);" >
+				<h1 style="text-align: center;">Amit kumar</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container col-md-6">
+				<img class="profile_photo profile_photo2" src="img/vikash.png" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+				<h1 style="text-align: center;">Vikash tirpathi</h1>
+			</div>
+			<div class="container col-md-6">
+				<img class="profile_photo profile_photo3" src="img/shivansh.png" onmouseover="hover3(this);" onmouseout="unhover3(this);">
+				<h1 style="text-align: center;">Shivansh pandey</h1>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 80px;">
+			<div class="container col-md-2">
+			</div>
+			<div class="container col-md-4">
+				<img class="profile_photo profile_photo4" src="img/sahil.png" onmouseover="hover4(this);" onmouseout="unhover4(this);">
+				<h1 style="text-align: center;">Sahil garg</h1>
+			</div>
+			<div class="container col-md-4">
+				<img class="profile_photo profile_photo5" src="img/rakshit.png" onmouseover="hover5(this);" onmouseout="unhover5(this);">
+				<h1 style="text-align: center;">Rakshit choudhry</h1>
+			</div>
+		</div>
+	</div>
+	
+
+<footer style="background-color: #0c1a1e">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 footerleft ">
+        <div class="logofooter" style="color:#e82c2c "> MyBus</div>
+        <p>book your ride!!</p>
+        <!-- <p><i class="fa fa-map-pin"></i> 210, Aggarwal Tower, Rohini sec 9, New Delhi -        110085, INDIA</p> -->
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9728024431</p>
+        <p><i class="fa fa-envelope"></i> E-mail : amitgomi525.ag@gmail.com</p>
+        
+      </div>
+      <div class="col-md-2 col-sm-6 paddingtop-bottom">
+              </div>
+      <div class="col-md-3 col-sm-6 paddingtop-bottom">
+        <h6 class="heading7">LATEST POST</h6>
+        <div class="post">
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 paddingtop-bottom">
+        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+          <div class="fb-xfbml-parse-ignore">
+            <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright" style="background-color: black;">
+  <div class="container">
+    <div class="col-md-6">
+      <p>© 2018 - All Rights with MyBus</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_ul" >
+        <li style="display: inline-block; margin: 4px; "><a style="color:#e82c2c;" href="#">mybus.com</a></li>
+        <li style="display: inline-block; margin: 4px; "><a style="color:#e82c2c;" href="#">About us</a></li>
+        <li style="display: inline-block; margin: 4px; "><a style="color:#e82c2c;" href="#">Contact us</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="js/bootstrap.min.js" type="text/css"></script>
+</body>
+</html>
+
+
+
+
