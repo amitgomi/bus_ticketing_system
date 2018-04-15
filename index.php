@@ -13,27 +13,56 @@
 		<h1 style="padding-left:100px; ">Book your ride!!</h1>
 		<?php
 		$min_date = date("Y-m-d");
-		$max_date = date('Y-m-d', strtotime($min_date. ' + 29 days'))
+		$max_date = date('Y-m-d', strtotime($min_date. ' + 29 days'));
+
+		if(isset($_POST['submit'])){
+			$source=$_POST['source'];
+			$date=$_POST['date'];
+			//echo $date;
+			$source = trim($source);
+			$source = strtolower($source);
+			$destination=$_POST['destination'];
+			$destination = trim($destination);
+			$destination = strtolower($destination);
+		}
 		?>
 
 		<form  style=" " class="form-inline" action="index.php" method="POST">
 		    <div class="form-group">
 		      <label class="control-label col-sm-3" for="source">Source:</label>
 		      <div class="col-sm-10">
-		        <input type="text" name="source" class="form-control" id="source" placeholder="Enter source">
+		        <input type="text" name="source" class="form-control" id="source" placeholder="Enter source" 
+		        <?php
+		        if(isset($_POST['submit'])){
+		        	echo 'value="'.$source.'"';
+		        }
+		        ?>
+		        >
 		      </div>
 		    </div>
 		    <div class="form-group">
 		      <label class="control-label col-sm-3" for="pwd">Destination:</label>
 		      <div class="col-sm-10">          
-		        <input type="text" name="destination" class="form-control" id="destination" placeholder="Enter destination">
+		        <input type="text" name="destination" class="form-control" id="destination" placeholder="Enter destination" 
+		        <?php
+		        if(isset($_POST['submit'])){
+		        	echo 'value="'.$destination.'"';
+		        }
+		        ?>
+		        >
 		      </div>
 		    </div>
 
 		    <div class="form-group">
 		      <label class="control-label col-sm-3" for="source">Date:</label>
 		      <div class="col-sm-10">
-		        <input type="date" min=<?php echo $min_date;?> max=<?php echo $max_date;?> name="date" class="form-control" id="date" placeholder="dd/mm/yyyy" >
+		        <input type="date" min=<?php echo $min_date;?> max=<?php echo $max_date;?> name="date" class="form-control" id="date" placeholder="dd/mm/yyyy" 
+		        <?php
+		        if(isset($_POST['submit'])){
+		        	echo 'value="'.$date.'"';
+		        }
+		        ?>
+		        >
 		      </div>
 		    </div>
 
@@ -51,9 +80,11 @@
 				$_SESSION["date"]=$date;
 				//echo $date;
 				$source = trim($source);
+				$source = strtolower($source);
 				$_SESSION["source"] =$source;
 				$destination=$_POST['destination'];
 				$destination = trim($destination);
+				$destination = strtolower($destination);
 				$_SESSION["destination"]=$destination;
 
 

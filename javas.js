@@ -27,37 +27,38 @@ function update_profile() {
 }   
 
 function hover1(element) {
-  element.setAttribute('src', 'img/amit1.png');
+    element.setAttribute('src', 'img/amit1.png');
 }
 
 function unhover1(element) {
-  element.setAttribute('src', 'img/amit.png');
+    element.setAttribute('src', 'img/amit.png');
 }
 function hover2(element) {
-  element.setAttribute('src', 'img/vikash1.png');
+    element.setAttribute('src', 'img/vikash1.png');
 }
 
 function unhover2(element) {
-  element.setAttribute('src', 'img/vikash.png');
+    element.setAttribute('src', 'img/vikash.png');
 }
 function hover3(element) {
-  element.setAttribute('src', 'img/shivansh1.png');
+    element.setAttribute('src', 'img/shivansh1.png');
 }
 
 function unhover3(element) {
-  element.setAttribute('src', 'img/shivansh.png');
+    element.setAttribute('src', 'img/shivansh.png');
 }
 function hover4(element) {
-  element.setAttribute('src', 'img/sahil1.png');
+    element.setAttribute('src', 'img/sahil1.png');
 }
 
 function unhover4(element) {
-  element.setAttribute('src', 'img/sahil.png');
+    element.setAttribute('src', 'img/sahil.png');
 }
 function hover5(element) {
-  element.setAttribute('src', 'img/rakshit1.png');
+    element.setAttribute('src', 'img/rakshit1.png');
 }
 
 function unhover5(element) {
-  element.setAttribute('src', 'img/rakshit.png');
+    element.setAttribute('src', 'img/rakshit.png');
 }
+

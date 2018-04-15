@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2018 at 12:29 AM
+-- Generation Time: Apr 14, 2018 at 05:45 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -28,10 +28,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
-  `name` varchar(256) NOT NULL,
+  `user_name` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `user_name`, `password`, `email`) VALUES
+(1, 'amitgomi', 'gomi', 'amitgomi525.ag@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -42,16 +49,11 @@ CREATE TABLE `admin` (
 CREATE TABLE `bus` (
   `bus_id` int(11) NOT NULL,
   `bus_no` varchar(25) NOT NULL,
-  `source_station` varchar(256) NOT NULL,
   `intermediate_station` varchar(1024) NOT NULL,
-  `destination_station` varchar(256) NOT NULL,
   `driver_name` varchar(256) NOT NULL,
   `total_seats` int(11) NOT NULL,
-  `available_seats` int(11) NOT NULL,
   `intermediate_price` varchar(256) NOT NULL,
-  `source_time` varchar(256) NOT NULL,
   `intermediate_time` varchar(1024) NOT NULL,
-  `destination_time` varchar(256) NOT NULL,
   `photo` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -59,10 +61,54 @@ CREATE TABLE `bus` (
 -- Dumping data for table `bus`
 --
 
-INSERT INTO `bus` (`bus_id`, `bus_no`, `source_station`, `intermediate_station`, `destination_station`, `driver_name`, `total_seats`, `available_seats`, `intermediate_price`, `source_time`, `intermediate_time`, `destination_time`, `photo`) VALUES
-(1, 'HR 10 A1234', 'allahabad', 'allahabad,kanpur,mathura,alwar', 'alwar', 'good_driver', 30, 30, '0,50,40,50', '06:10', '06:10,07:10,08:10,09:10', '09:10', '1.jpeg'),
-(2, 'UP 10 F 1243', 'lucknow', 'lucknow,kanpur,fatehpur,allahabad,handia,gopiganj,varanasi', 'varanasi', 'ravi', 37, 37, '0,45,26,48,75,59,48', '05:48', '05:48,08:15,09:16,10:48,11:26,11:55,12:48', '12:48', '2.jpeg'),
-(3, 'UP 11 F 1326', 'delhi', 'delhi,lucknow,kanpur,fatehpur,allahabad,handia,gopiganj,varanasi', 'varanasi', 'ravi', 37, 37, '0,34,45,26,48,75,59,48', '05:48', '05:48,08:15,09:16,10:48,11:26,11:55,12:08,12:48', '12:48', '3.jpeg');
+INSERT INTO `bus` (`bus_id`, `bus_no`, `intermediate_station`, `driver_name`, `total_seats`, `intermediate_price`, `intermediate_time`, `photo`) VALUES
+(1, 'HR 10 A1234', 'allahabad,kanpur,mathura,alwar', 'good_driver', 30, '0,50,40,50', '06:10 AM,07:10 AM,08:10 AM,09:10 AM', '1.jpeg'),
+(2, 'UP 10 F 1243', 'lucknow,kanpur,fatehpur,allahabad,handia,gopiganj,varanasi', 'ravi', 37, '0,45,26,48,75,59,48', '05:48 PM,08:15 PM,09:16 PM,10:48 PM,11:26 PM,11:55 PM,12:48 AM', '2.jpeg'),
+(3, 'UP 11 F 1326', 'delhi,lucknow,kanpur,fatehpur,allahabad,handia,gopiganj,varanasi', 'ravi', 37, '0,34,45,26,48,75,59,48', '05:48 AM,08:15 AM,09:16 AM,10:48 AM,11:26 AM,11:55 AM,12:08 PM,12:48 PM', '3.jpeg'),
+(4, 'UP 18 F 1343', 'delhi,bareilly,lucknow,faizabad,gorakhpur,jaunpur,varanasi', 'bittu_dalal', 34, '0,50,84,56,95,52,45', '09:00 AM,11:00 AM,12:30 PM,02:10 PM,03:12 PM,03:55 PM,05:00 PM', '4.jpeg'),
+(5, 'DL 5 S 7856', 'delhi,gurugram,rewari,mahendragarh,narnaul,jaipur,tonk,bundi,kota', 'pandey', 34, '0,45,53,25,45,25,55,95,55', '08:00 AM,09:00 AM,09:45 AM,10:45 AM,11:15 AM,02:15 PM,05:30 PM,08:15 PM,09:00 PM', '5.jpeg'),
+(9, 'a', 'a,a,a', 'a', 30, '0,12,12', '1:01 pm,1:01 am,3:03 pm', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seats`
+--
+
+CREATE TABLE `seats` (
+  `bus_id` int(11) NOT NULL,
+  `date1` date NOT NULL,
+  `available_seats` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seats`
+--
+
+INSERT INTO `seats` (`bus_id`, `date1`, `available_seats`) VALUES
+(1, '2018-04-09', 25),
+(1, '2018-04-08', 29),
+(1, '2018-04-06', 31),
+(1, '2018-04-10', 29),
+(1, '0000-00-00', 30),
+(2, '2018-05-05', 37),
+(3, '2018-05-05', 35),
+(2, '2018-04-10', 33),
+(3, '2018-04-10', 35),
+(1, '2018-04-11', 30),
+(1, '2018-04-12', 30),
+(1, '2018-04-05', 28),
+(4, '2018-04-10', 34),
+(5, '2018-04-10', 31),
+(2, '2018-04-11', 37),
+(3, '2018-04-11', 37),
+(2, '2018-04-12', 37),
+(3, '2018-04-12', 37),
+(1, '2018-04-14', 30),
+(1, '2018-04-21', 30),
+(1, '2018-04-19', 29),
+(1, '2018-04-18', 30),
+(1, '2018-04-17', 30);
 
 -- --------------------------------------------------------
 
@@ -91,16 +137,29 @@ CREATE TABLE `ticket` (
   `destination` varchar(256) NOT NULL,
   `price` int(11) NOT NULL,
   `time_of_booking` varchar(50) NOT NULL,
-  `no_of_passenger` int(11) NOT NULL
+  `no_of_passenger` int(11) NOT NULL,
+  `date_of_journey` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ticket`
 --
 
-INSERT INTO `ticket` (`ticket_id`, `user_id`, `bus_id`, `source`, `destination`, `price`, `time_of_booking`, `no_of_passenger`) VALUES
-(1, 1, 1, 'allahabad', 'kanpur', 50, '00:00', 2),
-(2, 1, 3, 'delhi', 'allahabad', 153, '00:00', 3);
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `bus_id`, `source`, `destination`, `price`, `time_of_booking`, `no_of_passenger`, `date_of_journey`) VALUES
+(28, 5, 1, 'allahabad', 'kanpur', 50, '2018-04-08 01:31:16pm GMT', 1, '2018-04-10'),
+(29, 5, 1, 'allahabad', 'kanpur', 50, '2018-04-08 01:31:27pm GMT', 1, '2018-04-10'),
+(30, 5, 3, 'allahabad', 'varanasi', 230, '2018-04-08 01:47:48pm GMT', 2, '2018-05-05'),
+(31, 5, 2, 'allahabad', 'varanasi', 230, '2018-04-08 02:24:46pm GMT', 1, '2018-04-10'),
+(32, 1, 1, 'allahabad', 'kanpur', 50, '2018-04-08 05:29:57pm GMT', 1, '2018-04-08'),
+(33, 1, 1, 'allahabad', 'kanpur', 100, '2018-04-08 05:46:20pm GMT', 2, '2018-04-09'),
+(34, 1, 1, 'allahabad', 'kanpur', 100, '2018-04-09 10:33:11am GMT', 2, '2018-04-05'),
+(35, 1, 1, 'allahabad', 'kanpur', 50, '2018-04-09 10:56:39am GMT', 1, '2018-04-09'),
+(38, 1, 1, 'allahabad', 'kanpur', 50, '2018-04-09 10:59:01am GMT', 1, '2018-04-09'),
+(39, 1, 1, 'allahabad', 'kanpur', 50, '2018-04-09 11:01:19am GMT', 1, '2018-04-09'),
+(43, 1, 3, 'delhi', 'varanasi', 670, '2018-04-09 11:08:41am GMT', 2, '2018-04-10'),
+(44, 1, 5, 'delhi', 'kota', 1194, '2018-04-09 11:23:44am GMT', 3, '2018-04-10'),
+(45, 1, 2, 'lucknow', 'varanasi', 903, '2018-04-09 11:45:37am GMT', 3, '2018-04-10'),
+(46, 1, 1, 'allahabad', 'kanpur', 50, '2018-04-14 05:11:53pm GMT', 1, '2018-04-19');
 
 -- --------------------------------------------------------
 
@@ -131,8 +190,7 @@ INSERT INTO `user` (`user_id`, `email_id`, `password`, `phone_no`, `first_name`,
 (7, 'garg@gmail.com', 'garg', 8785615365, 'sahil', 'garg', 'sahil', 'garg.jpeg'),
 (8, 'hello@gmail.com', 'hello', 7518151534, 'hello', 'hello', 'hello', 'hello.jpeg'),
 (9, 'hello', 'hello', 7895153153, 'hello', 'hello', 'hello', 'hello.jpeg'),
-(10, 'fsd', 'fs', 1535515634, 'fsd', 'fds', 'fds', 'fs.jpeg'),
-(11, 'fdsfs', 'asdf', 1234567890, 'sdf', 'dsfsd', 'df', 'asdf.jpeg');
+(37, 'vineset@gmail.com', 'amitgomi', 9876543210, 'a', 'a', 'amitgomi1', 'amitgomi1.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -176,12 +234,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `bus`
 --
 ALTER TABLE `bus`
-  MODIFY `bus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `station`
 --
@@ -191,12 +249,12 @@ ALTER TABLE `station`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

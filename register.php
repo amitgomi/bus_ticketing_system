@@ -24,6 +24,8 @@
 	$con_password=$_POST['con_password'];
 	$photo=$_SESSION["photo"]=$user_name.".jpeg";
 
+	$first_name=trim($first_name);
+	$last_name=trim($last_name);
 	$query = "SELECT * FROM user WHERE user_name = '$user_name'";
 //////////////////username check
 	$connection = mysqli_connect("localhost",'root','','mybus');
@@ -126,6 +128,12 @@ $query = "SELECT * FROM user WHERE phone_no = $phone_no";
 		    <br>
 		    <input type="text" class="form-control " style="display: inline-block; width: 34%;" name="first_name" placeholder="First name" value="<?php echo $first_name?>">
 		    <input type="text" class="form-control" name="last_name" style="display: inline-block; margin-left: 20px; width: 33%;" placeholder="Last name" value="<?php echo $last_name;?>">
+		    <?php
+		    echo $first_name." ".$last_name;
+		    if(strlen($first_name)+strlen($last_name) <3){?>
+		    <br>
+		    <small class="form-text text-muted text-danger" >Name can not be too short</small>
+		    <?php }?>
 		</div>
 		<div class="form-group">
 		    <label for="exampleInputEmail1">Email address:</label>

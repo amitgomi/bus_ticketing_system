@@ -11,5 +11,4 @@
 		$_SESSION["cur_page"]="index.php";
 		//$_SESSION["connection"]="";
 	}
-
 ?>
